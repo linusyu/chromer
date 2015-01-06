@@ -154,8 +154,7 @@ h1 i{
     font-weight: bold;
 }
 #container{
-    min-height: 400px;
-    max-height: 440px;    
+    height: 440px;    
     overflow-y: auto; 
     padding-right: 50px;   
 }
