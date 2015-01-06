@@ -55,6 +55,44 @@ a {
     cursor: pointer;
     text-decoration: none;
 }
+@-webkit-keyframes rotate {
+    from {-webkit-transform:rotate(0deg);}
+    to {-webkit-transform:rotate(360deg);}
+}
+@-moz-keyframes rotate {
+    from {-moz-transform:rotate(0deg);}
+    to {-moz-transform:rotate(360deg);}
+}
+@keyframes rotate {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+#loading {
+    display: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 233;
+    height: 64px;
+    width: 64px;
+    overflow: hidden;
+    background-image: url("../img/chrome.png");
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: rotate;
+    -moz-animation-duration: 0.5s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    animation-name: rotate;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
 #wrapper{
     width: 740px;
     margin: 0 auto;

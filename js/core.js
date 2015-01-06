@@ -7,7 +7,8 @@
 
     nch.dom = {
         tpl : document.querySelector("#template"),
-        cmt : document.querySelector("#container")
+        cmt : document.querySelector("#container"),
+        loading: document.querySelector("#loading")
     }
 
     nch.ajax = function (details, onload) {
@@ -41,11 +42,13 @@
         i.addEventListener("click", function(){
             nch.dom.tpl.querySelector("h1").textContent = i.textContent;
             nch.dom.tpl.style.display = "block";
+            nch.dom.loading.style.display = "block";
             nch.ajax({
                 url:"template/" + i.dataset.url + ".html",
                 onload: function(){
                     var dom = new DOMParser().parseFromString(this.responseText, 'text/html');
-                    nch.dom.cmt.innerHTML = dom.body.innerHTML;          
+                    nch.dom.cmt.innerHTML = dom.body.innerHTML; 
+                    nch.dom.loading.style.display = "none";
                 }
             });            
         },false)
@@ -54,5 +57,6 @@
     close.addEventListener("click", function(){
         nch.dom.tpl.style.display = "none";
         nch.dom.cmt.innerHTML = "";
+        nch.dom.loading.style.display = "none";
     }, false)    
 })();
