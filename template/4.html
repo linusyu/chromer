@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Chrome 根本打不开-九评酷容</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h3>问题</h3>
+<p>Chrome 异常关闭时，系统会显示该错误。</p>
+<h3>解决方法</h3>
+<h4>请尝试重新启动浏览器。</h4>
+<p>如果可能，“Google Chrome”会根据您的上一次浏览会话<a href="https://support.google.com/answer.py?answer=95268">恢复网页</a>。</p>
+<h4>您是否安装了 Internet Download Manager？</h4>
+<p>如果您安装了 Internet Download Manager，请将其<a target="_blank" href="http://www.internetdownloadmanager.com/">升级至 IDM 6.03 测试版</a>（仅提供英文网页），或转至<strong>选项 &gt; 常规</strong>下，停用“高级浏览器集成”选项。</p>
+<h4>查看冲突软件。</h4>
+<p>您也可以通过在地址栏中键入 <strong><code>about:conflicts</code></strong> 来查找冲突软件。如果计算机中存在已知会导致 Google Chrome 崩溃的软件，那么该网页将突出显示此软件以及所有用于解决冲突的建议操作。在许多情况下，冲突软件是需要用防病毒软件删除的恶意软件。</p>
+<h4>请检查您是否需要新的浏览器用户个人资料。</h4>
+<p>如果此错误消息重复出现，则说明您的浏览器用户个人资料可能已损坏。首先将“Default”子文件夹从“User Data”文件夹中移出，查看是否可解决该问题。</p>
+<ol>
+	<li>按键盘快捷键 <strong>Win 键 <img width="26" height="31" src="//storage.googleapis.com/support-kms-prod/SNP_2894099_en_v1"> +E</strong> 打开 Windows 资源管理器。</li>
+	<li>在显示的 Windows 资源管理器窗口的地址栏中输入以下内容：
+		<p><strong>Windows</strong></p>
+		<ul>
+			<li>Windows XP：<code>%USERPROFILE%\Local Settings\Application Data\Google\Chrome\User Data\ </code></li>
+			<li>Windows Vista/Windows 7/Windows 8：<code>%LOCALAPPDATA%\Google\Chrome\User Data\</code></li>
+		</ul>
+		<p><strong>Mac OS X</strong>：<code>~/Library/Application Support/Google/Chrome/Default</code></p>
+		<p><strong>Linux</strong>：<code>~/.config/google-chrome/Default</code></p>
+	</li>
+	<li>点击<strong>确定</strong>。</li>
+	<li>在打开的窗口中，将“Default”文件夹重命名为“Backup”。</li>
+	<li>将“User Data”文件夹中的“Backup”文件夹移到上一级的“Chrome”文件夹中。</li>
+</ol>
+<p>如果仍发生此错误，请尝试<a href="https://support.google.com/chrome/answer/142059">创建新的用户配置文件</a>，替换当前的配置文件。</p>
+<h4>请检查受保护系统文件是否存在问题。</h4>
+<ol>
+	<li>转至<strong>开始菜单 &gt; 运行</strong>。</li>
+	<li>输入以下命令：<code>SFC.EXE /SCANNOW</code>（务必在 <code>SFC.EXE</code> 与 <code>/SCANNOW</code> 之间留一个空格）。该命令会启动 Microsoft 实用程序，扫描和修复计算机上受保护系统文件存在的问题。</li>
+</ol>
+<p>尝试打开 Google Chrome，看看是否仍然显示错误讯息。</p>
+<p>仍然有问题？请访问<a target="_blank" href="http://www.google.com/support/forum/p/Chrome">帮助论坛</a>告知我们。</p>
+<p class="lightbulb">请允许 Google Chrome 自动向 Google <a href="answer.py?answer=96817">发送使用情况统计信息和崩溃报告</a>，以便帮助我们防止崩溃情况的发生。</p>
+</body>
+</html>
