@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+<head>
+<style>
+html,body{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    overflow: hidden;
+}
+h1,h2{
+    text-align: center;
+}
+#testWrap{
+    position: relative;
+    margin-top: -380px;
+}
+#fps{
+    text-align: right;
+}
+.animate {
+    float: left;
+    width: 12px;
+    height: 20px;
+    word-break: break-all;
+    text-align: center;
+    color: #00ff00;
+    font-size: 15px;
+    font-family: Arail;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00ff00, 0 0 10px #00ff00;
+    animation: 3s linear normal none infinite running animate;
+    -moz-animation: 3s linear normal none infinite running animate;
+    -webkit-animation: 3s linear normal none infinite running animate;
+}
+</style>
+<style>
+    #level{
+        position: absolute;
+        z-index: 233;
+        top: 70px;
+        left: 0;
+        color: #ffffff;
+    }
+    #stats{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    #fps{
+        background-color: #000000 !important;
+    }
+    #fpsText{
+        color: red !important;
+        border-bottom: 1px solid #ffffff;
+    }
+    #fpsGraph{
+        background-color: red !important;
+    }
+    #fpsGraph > span{
+        background-color: #000000 !important;
+    }
+</style>
+</head>
+<body>
+    <div id="level">
+        <label>等级：</label>
+        <select id="count">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>   
+    </div>
+    <div id="testWrap"></div>
+<script>
+(function(){
+
+    var dom = {
+        wrap : document.querySelector("#testWrap"),
+        count : document.querySelector("#count"),
+    }
+    
+    window.bsTest = {};
+    
+    bsTest.appendTest = function(n){
+        dom.wrap.innerHTML = "";
+        for(var i = 0;i < n;i++){
+            var ele = document.createElement("div");
+            var html = "";
+            for(var j = 0;j < 20;j++){
+                html += "<b style='opacity:" +j/20+ "'>" + Math.round(Math.random()) + "</b>";
+            }
+            ele.className = "animate";
+            ele.style.webkitAnimationDelay = Math.random()*3 +"s";
+            ele.style.animationDelay = Math.random()*3 +"s";
+            //.style.marginLeft = window.screen.width/n/2 +"px";
+            ele.innerHTML = html;
+            dom.wrap.appendChild(ele);
+        }
+    };
+       
+    bsTest.css = function(){
+        var style = document.createElement("style");
+        document.head.appendChild(style);
+        style.innerHTML = "@keyframes animate {0%{opacity:0.3;transform: translateY(0);}"+
+        "100% {opacity:1;transform:translateY(" +(window.screen.height+380)+ "px);}}"+
+        "@-webkit-keyframes animate {0%{opacity:0.3;transform: translateY(0);}"+
+        "100% {opacity:1;transform:translateY(" +(window.screen.height+380)+ "px);}}";
+    };
+
+    bsTest.bind = function(){
+        dom.count.addEventListener("change",function(){
+            var count = window.screen.width/12/2 * this.options[this.selectedIndex].value;
+            bsTest.appendTest(count);
+        },false);
+    };
+    
+    bsTest.init = function(){
+        this.bind(); 
+        this.css();
+        this.appendTest(window.screen.width/12);
+    };
+    
+    bsTest.init();
+})();
+</script>
+<script src="js/stats.min.js"></script>
+<script>
+
+    var stats = new Stats();
+    document.body.appendChild( stats.domElement );
+    setInterval( function () {
+        stats.begin();
+        stats.end();
+    }, 10 );
+
+</script>
+</body>
+</html>
